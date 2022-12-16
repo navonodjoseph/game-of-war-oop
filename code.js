@@ -48,31 +48,32 @@ class Deck {
         return { playerOne, playerTwo} ; 
     }
     compare (){
-        let playerOneScore = 26; 
-        let playerTwoScore = 26; 
        if (this.deal().playerOne[0].score > this.deal().playerTwo[0].score){
-        playerOneScore ++;
-        playerTwoScore --;
+        // playerOneScore ++;
+        // playerTwoScore --;
+        this.deal().playerOne.push(this.deal().playerOne.shift()); 
+        this.deal().playerTwo.push(this.deal().playerOne.shift()); 
         return ` player one wins!
         player one played ${this.deal().playerOne[0].rank} of ${this.deal().playerOne[0].suit}
         player two played ${this.deal().playerTwo[0].rank} of ${this.deal().playerTwo[0].suit}
         
         *** REMAINING CARDS ***
-        P1: ${playerOneScore}
-        P2: ${playerTwoScore} 
+        P1: ${this.deal().playerOne.length}
+        P2: ${this.deal().playerOne.length}
         `; 
        } else if (this.deal().playerOne[0].score < this.deal().playerTwo[0].score){
-        playerOneScore --;
-        playerTwoScore ++;
+        // playerOneScore --;
+        // playerTwoScore ++;
+        this.deal().playerTwo.push(this.deal().playerTwo.shift()); 
+        this.deal().playerOne.push(this.deal().playerTwo.shift()); 
         return ` player two wins!
         player one played ${this.deal().playerOne[0].rank} of ${this.deal().playerOne[0].suit}
         player two played ${this.deal().playerTwo[0].rank} of ${this.deal().playerTwo[0].suit}
         
         *** REMAINING CARDS ***
-        P1: ${playerOneScore}
-        P2: ${playerTwoScore}
-        `
-       }else {
+        P1: ${this.deal().playerOne.length}
+        P2: ${this.deal().playerOne.length}`
+        } else {
         return 'draw!'
        }
     }
@@ -94,10 +95,7 @@ deck.createDeck(suits, ranks, scores);
 
 deck.shuffle(); 
 console.log(deck.deal());
-console.log(deck.compare()); 
-console.log(deck.compare()); 
-console.log(deck.compare()); 
-console.log(deck.compare()); 
+console.log(deck.compare()) 
 
 
 
