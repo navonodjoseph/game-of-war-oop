@@ -33,14 +33,28 @@ class Deck {
         return this.deck; 
     }
 
-    deal (){
-    let hand = [];
-    while(hand.length < 2){
-        hand.push(this.deck.pop());
+    // deal (){
+    // let hand = [];
+    // while(hand.length < 26){
+    //     hand.push(this.deck.pop());
+    // }
+    // return hand; 
+    
+    
+    deal (deck){
+        const middle = Math.ceil (this.deck.length /2)
+        const playerOne = this.deck.slice(0, middle); 
+        const playerTwo = this.deck.slice(middle); 
+        return { playerOne, playerTwo} ; 
     }
-    return hand; 
-    }
-}
+    
+}   
+     
+      
+
+
+
+
 
 // class Player {
 //     constructor (playerOne, playerTwo){
@@ -101,8 +115,8 @@ class Deck {
 const suits = ["Hearts", "Diamonds", "Clubs", "Spades"]; 
 const ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King", "Ace"];
 const scores = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]; 
-let playerOne = 26; 
-let playerTwo = 26; 
+// let playerOne = 26; 
+// let playerTwo = 26; 
 
 const deck = new Deck(); 
 deck.createDeck(suits, ranks, scores); 
@@ -135,4 +149,6 @@ const compare = array => {
     }    
 // console.log(compare(myArray)); 
 // deck.deal(); 
-console.log(deck);
+//console.log(deck);
+deck.shuffle(); 
+console.log(deck.deal());
