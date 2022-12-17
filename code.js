@@ -51,16 +51,15 @@ class Deck {
        if (deck.deal().playerOne[0].score > deck.deal().playerTwo[0].score){
         // playerOneScore ++;
         // playerTwoScore --;
-        playerOne.push(playerOne.shift()); 
-        playerOne.push(playerTwo.shift());  
+        deck.deal().playerOne.push(deck.deal().playerOne.shift()); 
+        deck.deal().playerOne.push(deck.deal().playerTwo.shift());  
         return ` player one wins!
         player one played ${this.deal().playerOne[0].rank} of ${this.deal().playerOne[0].suit}
         player two played ${this.deal().playerTwo[0].rank} of ${this.deal().playerTwo[0].suit}
         
         *** REMAINING CARDS ***
         P1: ${deck.deal().playerOne.length}
-        P2: ${deck.deal().playerTwo.length}
-        `; 
+        P2: ${deck.deal().playerTwo.length}` 
        } else if (this.deal().playerOne[0].score < this.deal().playerTwo[0].score){
         // playerOneScore --;
         // playerTwoScore ++;
@@ -79,18 +78,18 @@ class Deck {
         return 'draw!'
        }
     }
-    pushArray (){
-        this.playerOneWins = playerOneWins; 
-        this.playerTwoWins = playerTwoWins; 
-        if(playerOneWins){
-        deck.deal().playerOne.push(playerOne.shift()); 
-        deck.deal().playerOne.push(playerTwo.shift());  
-        } else if (this.playerTwoWins) {
-        deck.deal().playerTwo.push(deck.deal().playerTwo.shift()); 
-        deck.deal().playerTwo.push(deck.deal().playerOne.shift());  
-        }
+    // pushArray (){
+    //     this.playerOneWins = playerOneWins; 
+    //     this.playerTwoWins = playerTwoWins; 
+    //     if(playerOneWins){
+    //     deck.deal().playerOne.push(playerOne.shift()); 
+    //     deck.deal().playerOne.push(playerTwo.shift());  
+    //     } else if (this.playerTwoWins) {
+    //     deck.deal().playerTwo.push(deck.deal().playerTwo.shift()); 
+    //     deck.deal().playerTwo.push(deck.deal().playerOne.shift());  
+    //     }
 
-    }
+    // }
 }
 
 
@@ -110,8 +109,8 @@ deck.createDeck(suits, ranks, scores);
 deck.shuffle(); 
 console.log(deck.deal());
 console.log(deck.compare()) 
-console.log(deck.pushArray(deck.pushArray.playerOneWins)); 
 
+console.log(deck.deal().playerOne); 
 
 
 // class Player {
