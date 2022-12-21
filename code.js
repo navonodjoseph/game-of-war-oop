@@ -52,7 +52,7 @@ class Deck {
         return {playOne, playTwo} ; 
     }
     compare (){
-       if (playOne[2][0].score > playTwo[2][0].score){ 
+       if (playTwo[2][0].score > playOne[2][0].score){ 
         //deck.deal().playerTwo.score){
         // playerOneScore ++;
         // playerTwoScore --;
@@ -70,7 +70,7 @@ class Deck {
         *** REMAINING CARDS ***
         P1: ${playOne[2].length} 
         P2: ${playTwo[2].length}`  
-        } else if (playOne[2][0].score < playTwo[2][0].score){  
+        } else if (playTwo[2][0].score < playOne[2][0].score){  
         //(this.deal().playerOne[0].score < this.deal().playerTwo[0].score){
         // playerOneScore --;
         // playerTwoScore ++;
@@ -123,7 +123,8 @@ deck.createDeck(suits, ranks, scores);
 
 deck.shuffle(); 
 deck.deal(); 
-console.log(deck.compare()); 
+const play = () => console.log(deck.compare()); 
+
 //console.log(deck); 
 //console.log(playOne[2][0]); 
 
