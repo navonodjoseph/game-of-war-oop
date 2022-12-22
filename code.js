@@ -46,50 +46,57 @@ class Deck {
         //const playTwo = []; 
         const middle = Math.ceil (this.deck.length /2)
         const playerOne = playOne.push(this.deck.slice(0, middle));
-        //playOne.push(playerOne);  
-        const playerTwo = this.deck.slice(middle);
+        playOne.push(playerOne);  
+        const playerTwo = playTwo.push(this.deck.slice(middle));
         playTwo.push(playerTwo);  
         return {playOne, playTwo} ; 
     }
     compare (){
-       if (playTwo[2][0].score > playOne[2][0].score){ 
+       if (playOne[4][0].score > playTwo[4][0].score){ 
         //deck.deal().playerTwo.score){
         // playerOneScore ++;
         // playerTwoScore --;
         //console.log('playerOne Wins!'); 
-        playOne[2].push(playOne[2].shift()); 
-        playOne[2].push(playTwo[2].shift()); 
+        playOne[4].push(playOne[4].shift()); 
+        playOne[4].push(playTwo[4].shift()); 
         // deck.deal().playerOne.push(deck.deal().playerOne.shift()); 
         // deck.deal().playerOne.push(deck.deal().playerTwo.shift());  
         // this.deal().playerOne.push(deck.deal().playerOne.shift()); 
         // playerOne.push(playerOne.shift())
         // playerOne.push(playerTwo.shift())
         return ` player one wins!
-        player one played ${playOne[2][0].rank} of ${playOne[2][0].suit}
-        player two played ${playTwo[2][0].rank} of ${playTwo[2][0].suit}
+        player one played ${playOne[4][0].rank} of ${playOne[4][0].suit}
+        player two played ${playTwo[4][0].rank} of ${playTwo[4][0].suit}
         *** REMAINING CARDS ***
-        P1: ${playOne[2].length} 
-        P2: ${playTwo[2].length}`  
-        } else if (playTwo[2][0].score < playOne[2][0].score){  
+        P1: ${playOne[4].length} 
+        P2: ${playTwo[4].length}`  
+        } else if (playTwo[4][0].score > playOne[4][0].score){  
         //(this.deal().playerOne[0].score < this.deal().playerTwo[0].score){
         // playerOneScore --;
         // playerTwoScore ++;
-        playTwo[2].push(playTwo[2].shift()); 
-        playTwo[2].push(playOne[2].shift()); 
+        playTwo[2].push(playTwo[4].shift()); 
+        playTwo[2].push(playOne[4].shift()); 
         //deck.deal().playerTwo.push(deck.deal().playerTwo.shift()); 
         //deck.deal().playerTwo.push(deck.deal().playerOne.shift());  
         //deck.deal().playerTwo.push(deck.deal().playerTwo.shift()); 
         //this.deal().playerOne.push(this.deal().playerTwo.shift()); 
         return ` player two wins!
-        player one played ${playOne[2][0].rank} of ${playOne[2][0].suit}
-        player two played ${playTwo[2][0].rank} of ${playTwo[2][0].suit}
+        player one played ${playOne[4][0].rank} of ${playOne[4][0].suit}
+        player two played ${playTwo[4][0].rank} of ${playTwo[4][0].suit}
 
         *** REMAINING CARDS ***
-        P1: ${playOne[2].length} 
-        P2: ${playTwo[2].length}`  
+        P1: ${playOne[4].length} 
+        P2: ${playTwo[4].length}`  
         } else {
         return 'draw!'
        }
+     }
+     isGameOver(){
+     if(playTwo[4].length === 0){
+        return "Game Over. PlayerTwo wins."
+     }else if(playOne[4].length === 0){
+        return "Game Over. PlayerOne wins."
+     }
     }
 
     // pushArray (){
@@ -111,19 +118,25 @@ const playOne = [];
 const playTwo = []; 
 
 const suits = ["Hearts", "Diamonds", "Clubs", "Spades"]; 
-const ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King", "Ace"];
+const ranks = ["Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"];
 const scores = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]; 
 // let playerOne = 26; 
 // let playerTwo = 26; 
-
+function isGameOver(deck){
+    return deck.numberOfCards === 0
+}
 const deck = new Deck(); 
 const playerOne = deck.deal().playerOne; 
-const playerTwo = deck.deal().playerTwo; 
+const playerTwo = deck.deal().playerTwo;
+//const playerOne = deck. 
 deck.createDeck(suits, ranks, scores); 
 
-deck.shuffle(); 
+deck.shuffle();  
 deck.deal(); 
+console.log("type 'play()' to begin!"); 
 const play = () => console.log(deck.compare()); 
+console.log(playOne[2]); 
+
 
 //console.log(deck); 
 //console.log(playOne[2][0]); 
